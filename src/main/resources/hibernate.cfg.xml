@@ -4,7 +4,6 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/book_bus_ticket</property>
         <property name="connection.username">root</property>
@@ -12,14 +11,16 @@
 
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
 
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="connection.pool_size">10</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping class="inheritance.Employee"/>
-        <mapping class="inheritance.Manager"/>
-        <mapping class="inheritance.Programmer"/>
-        <mapping class="jpa.Employee"/>
+        <mapping class="model.Ticket"/>
+        <mapping class="model.Role"/>
+        <mapping class="model.Admin"/>
+        <mapping class="model.User"/>
+        <mapping class="model.Passenger"/>
+        <mapping class="model.Bus"/>
     </session-factory>
 </hibernate-configuration>
