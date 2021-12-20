@@ -10,9 +10,5 @@ import javax.persistence.*;
 @Data
 @Entity
 public class User extends Role{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @ManyToOne
-    private Role role;
+
 }
