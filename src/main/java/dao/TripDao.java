@@ -1,27 +1,25 @@
 package dao;
 
 import model.Ticket;
-import model.TicketDto;
+import model.Trip;
+import model.TripDto;
 import org.hibernate.Criteria;
 import org.hibernate.ScrollableResults;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.LogicalExpression;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.criterion.SimpleExpression;
 import org.hibernate.transform.Transformers;
 
-import java.io.Reader;
 import java.util.Date;
 import java.util.List;
 
 /**
  * @author Mahsa Alikhani m-58
  */
-public class TicketDao extends BaseDao{
+public class TripDao extends BaseDao{
     private static final int pageIndex = 0;
-    public List<Ticket> findAvailableTicketInfo(String origin, String destination, Date departureDate, int pageSize) {
+    public List<Ticket> findAvailableTripsInfo(String origin, String destination, Date departureDate, int pageSize) {
         //int totalRecords;
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -32,15 +30,15 @@ public class TicketDao extends BaseDao{
         Criteria criteria = getCriteria(origin, destination, departureDate, session);
         criteria.setFirstResult(pageIndex);
         criteria.setMaxResults(pageSize);
-        List tickets = criteria.list();
+        List trips = criteria.list();
         transaction.commit();
         session.close();
-        return tickets;
+        return trips;
     }
 
     private Criteria getCriteria(String origin, String destination, Date departureDate, Session session) {
-        Criteria criteria = session.createCriteria(Ticket.class, "t");
-        criteria.createAlias("t.bus", "tb");
+        Criteria criteria = session.createCriteria(Trip.class, "t");
+        criteria.createAlias("t.buses", "tb");
         if(departureDate != null){
             criteria.add(Restrictions.and(Restrictions.eq("t.origin", origin),
                     Restrictions.eq("t.destination", destination),
@@ -54,8 +52,8 @@ public class TicketDao extends BaseDao{
                 .add(Projections.property("tb.busType").as("busType"))
                 .add(Projections.property("t.departureTime").as("departureTime"))
                 .add(Projections.property("t.price").as("price"))
-                .add(Projections.property("tb.capacity").as("capacity")));
-        criteria.setResultTransformer(Transformers.aliasToBean(TicketDto.class));
+                .add(Projections.property("t.remainingSeats").as("remainingSeats")));
+        criteria.setResultTransformer(Transformers.aliasToBean(TripDto.class));
         return criteria;
     }
 }
