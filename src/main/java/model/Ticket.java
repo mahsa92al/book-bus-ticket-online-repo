@@ -14,15 +14,7 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String origin;
-    private String destination;
-    @Temporal(TemporalType.DATE)
-    private Date departureDate;
-    @Temporal(TemporalType.TIME)
-    private Date departureTime;
-    private String corporationName;
-    private double price;
-    @ManyToOne
+    @OneToOne
     private Bus bus;
     @OneToOne
     private Passenger passenger;

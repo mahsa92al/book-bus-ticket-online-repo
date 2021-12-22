@@ -19,6 +19,6 @@ public class Bus {
     @Enumerated(EnumType.STRING)
     private BusType busType;
     private int capacity;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bus")
-    private List<Ticket> tickets = new ArrayList<>();
+    @OneToOne
+    private Ticket ticket;
 }
