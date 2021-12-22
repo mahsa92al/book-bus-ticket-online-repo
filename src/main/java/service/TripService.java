@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class TripService {
     TripDao tripDao = new TripDao();
-    public List<Ticket> getAvailableTicketsInfo(String origin, String destination, Date departureDate, int pageSize) {
+    public List<Ticket> getAvailableTripsInfo(String origin, String destination, Date departureDate, int pageSize) {
         List<Ticket> trips = tripDao.findAvailableTripsInfo(origin, destination, departureDate, pageSize);
         return trips;
     }
