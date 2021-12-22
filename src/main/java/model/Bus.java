@@ -21,4 +21,6 @@ public class Bus {
     private int capacity;
     @OneToOne
     private Ticket ticket;
+    @ManyToMany
+    private List<Trip> trips;
 }

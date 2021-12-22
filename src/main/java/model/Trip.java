@@ -25,7 +25,7 @@ public class Trip {
     private String corporationName;
     private double price;
     private int remainingSeats;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "trips")
     private List<Bus> buses = new ArrayList<>();
     @OneToMany
     private List<Ticket> tickets = new ArrayList<>();
