@@ -15,7 +15,7 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne
-    private Bus bus;
-    @OneToOne
     private Passenger passenger;
+    @OneToOne
+    private Trip trip;
 }
