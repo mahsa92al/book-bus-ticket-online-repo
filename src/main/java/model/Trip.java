@@ -1,6 +1,8 @@
 package model;
 
 import lombok.Data;
+import lombok.ToString;
+import model.enumeration.BusType;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,10 +25,11 @@ public class Trip {
     @Temporal(TemporalType.TIME)
     private Date departureTime;
     private String corporationName;
+    @Enumerated(EnumType.STRING)
+    private BusType busType;
     private double price;
     private int remainingSeats;
-    @ManyToMany(mappedBy = "trips")
+    @ToString.Exclude
+    @OneToMany(mappedBy = "trip")
     private List<Bus> buses = new ArrayList<>();
-    @OneToMany
-    private List<Ticket> tickets = new ArrayList<>();
 }
