@@ -16,11 +16,8 @@ public class Bus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Enumerated(EnumType.STRING)
-    private BusType busType;
     private int capacity;
-    @OneToOne
-    private Ticket ticket;
-    @ManyToMany
-    private List<Trip> trips;
+    private String busPlate;
+    @ManyToOne
+    private Trip trip;
 }
