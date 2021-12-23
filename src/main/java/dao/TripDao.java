@@ -187,10 +187,9 @@ public class TripDao extends BaseDao {
         return (Trip) result.get(0);
     }
 
-    public void updateRemainingSeats(Trip trip, int remainingSeats) {
+    public void updateRemainingSeats(Trip trip) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        trip.setRemainingSeats(remainingSeats);
         session.saveOrUpdate(trip);
         transaction.commit();
         session.close();

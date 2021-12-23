@@ -27,7 +27,7 @@ public class TripService {
         return trip;
     }
 
-    public void updateRemainingSeats(Trip trip, int remainingSeats) {
-        tripDao.updateRemainingSeats(trip, remainingSeats);
+    public void updateRemainingSeats(Trip trip) {
+        tripDao.updateRemainingSeats(trip);
     }
 }
