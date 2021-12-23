@@ -26,4 +26,8 @@ public class TripService {
         Trip trip = tripDao.findTripDetailById(id);
         return trip;
     }
+
+    public void updateRemainingSeats(Trip trip, int remainingSeats) {
+        tripDao.updateRemainingSeats(trip, remainingSeats);
+    }
 }
