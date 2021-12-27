@@ -22,5 +22,6 @@
         <mapping class="model.User"/>
         <mapping class="model.Passenger"/>
         <mapping class="model.Bus"/>
+        <mapping class="model.Trip"/>
     </session-factory>
 </hibernate-configuration>
