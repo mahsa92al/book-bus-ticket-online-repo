@@ -16,9 +16,9 @@ public class TripService {
     TripDao tripDao = new TripDao();
     public List<TripDto> getAvailableTripsInfo(String origin, String destination, Date departureDate,
                                                String corporationName, BusType busType, Double[] priceRange,
-                                               Date[] departureTimeRange, int pageSize) {
+                                               Date[] departureTimeRange, int pageSize, int startIndex) {
         List<TripDto> trips = tripDao.findAvailableTripsInfo(origin, destination, departureDate,
-                corporationName, busType, priceRange, departureTimeRange, pageSize);
+                corporationName, busType, priceRange, departureTimeRange, pageSize, startIndex);
         return trips;
     }
 
@@ -29,5 +29,10 @@ public class TripService {
 
     public void updateRemainingSeats(Trip trip) {
         tripDao.updateRemainingSeats(trip);
+    }
+
+    public Long getCountOfTrips(String origin, String destination, Date departureDate, String corporationName, BusType busType, Double[] priceRange, Date[] departureTimeRange) {
+        return tripDao.findCountOfTrips(origin, destination, departureDate,
+                corporationName, busType, priceRange, departureTimeRange);
     }
 }
