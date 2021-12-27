@@ -13,5 +13,4 @@ public class BusDto {
     private String busPlate;
     private Date departureDate;
     private int remainingSeats;
-    private int soldSeatNumber;
 }
